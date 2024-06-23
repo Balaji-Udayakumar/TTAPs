@@ -8,8 +8,7 @@ const userSchema = new mongoose.Schema({
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    category: { type: String, required: true, enum: ["student", "faculty"] },
-    wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: "Student" }]
+    category: { type: String, required: true, enum: ["student", "faculty"] }
 });
 
 userSchema.methods.generateAuthToken = function () {
@@ -19,7 +18,7 @@ userSchema.methods.generateAuthToken = function () {
     return token;
 };
 
-const User = mongoose.model("users", userSchema);
+const User = mongoose.model("user", userSchema);
 
 const validate = (data) => {
     const schema = Joi.object({
